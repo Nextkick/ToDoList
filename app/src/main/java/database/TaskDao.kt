@@ -1,7 +1,6 @@
 package database
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -11,11 +10,11 @@ import com.bignerdranch.android.todolist.Task
 @Dao
 interface TaskDao {
     @Query("SELECT * FROM task")
-    fun getTask(): MutableList<Task>
+    suspend fun getTask(): MutableList<Task>
 
     @Insert
-    fun addTask(task: Task)
+    suspend fun addTask(task: Task)
 
     @Delete
-    fun delTask(task: Task)
+    suspend fun delTask(task: Task)
 }
